@@ -2,6 +2,7 @@
  설치(필요) 프로그램:
  * node js
  * mysql
+ * npm
  
  개발 환경:
  * windows10
