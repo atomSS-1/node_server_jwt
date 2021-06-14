@@ -24,8 +24,9 @@
  1. node js 와 mysql 설치
  1. 개발 모드일 경우 mysql db 는 `devDb`, 테스트 모드 일 경우 `testDb`, 실행 모드 일 경우 `knance` 이다.
  1. 위 db를 mysql에서 `create database "데이터 베이스 이름"` 명령어를 실행하여 3개의 데이터베이스를 생성해준다
- 1. 콘솔에서 `npm install`로 모듈을 설치해준다
- 1. 실행 모드 `npm run start`으로 서버를 시작한다
- 1. 테스트 모드 `npm run start:test`으로 서버를 시작한다.
- 1. 개발 모드 `npm run start:dev`로 서버를 시작한다.
+ 1. `git clone https://github.com/k89jy/knance.git` 을 콘솔에서 실행한다.
+ 3. 콘솔에서 `npm install`로 모듈을 설치해준다
+ 4. 실행 모드 `npm run start`으로 서버를 시작한다
+ 5. 테스트 모드 `npm run start:test`으로 서버를 시작한다.
+ 6. 개발 모드 `npm run start:dev`로 서버를 시작한다.
  
