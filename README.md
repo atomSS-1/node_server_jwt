@@ -21,7 +21,7 @@
  |.env 파일을 개발 모드, 테스트 모드, 실행 모드로 구분하여 환경변수를 설정하였습니다. |해결|dotenv 모듈이 어느 파일에서 작동하지 않아 시간 소모를 하였습니다.|db를 나누는데 중점을 뒀습니다.|
  |Jwt login의 이해와 구현|해결||모든 정보가 토튼에 포함 되기 때문에 별도의 인증 저장소가 필요치 않다|
  |dotenv.config()로 환경변수 로딩하기|미해결|중복 코드가 있어 리펙토링이 필요하다||
- ## 실행 방벙
+ ## 실행 방법
  1. node js 와 mysql 설치
  1. 개발 모드일 경우 mysql db 는 `devDb`, 테스트 모드 일 경우 `testDb`, 실행 모드 일 경우 `knance` 이다.
  1. 위 db를 mysql에서 `CREATE DATABASE IF NOT EXISTS "데이터 베이스 이름"` 명령어를 실행하여 3개의 데이터베이스를 생성해준다
@@ -30,4 +30,19 @@
  4. 실행 모드 `npm run start`으로 서버를 시작한다
  5. 테스트 모드 `npm run start:test`으로 서버를 시작한다.
  6. 개발 모드 `npm run start:dev`로 서버를 시작한다.
+ 7. `127.0.0.1:3000/login` post method로 로그인은 시도한다
+ 8. `127.0.0.1:3000/insert` post method로 회원 정보를 만든다
  
+ ex))
+ request
+ {
+    "email":"q",
+    "password":"123"
+}  
+response
+{
+    "사용자 정보": {
+        "email": "q"
+    },
+    "token": "jwt 토큰"
+}
