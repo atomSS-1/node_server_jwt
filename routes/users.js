@@ -15,18 +15,22 @@ router.post("/login", async (req, res, next) => {
   // 아이디가 db에 존재 하면
   if (user) {
     // hash 값을 비교한다
-    const match = await bcrypt.compare(password.toString(), user.password);
-
+    const match = await compareHash(password, user.password);
+    console.log(`match = ${match}`);
     if (match) {
       //jwt 발행한다.
       const token = await signJwt(user, next);
-      console.log("match");
+      console.log("token", token);
       res.status(200).send({ "사용자 정보": { email: user.email }, token });
     } else {
-      //user가 없다면
-      console.log(1231);
-      res.status(401).send("실패");
+      // 비밀번호가 일치 하지 않는다면
+      console.log("비밀번호 오류");
+      res.status(401).send("로그인 실패");
     }
+  } else {
+    //user가 없다면
+    console.log("user 없음");
+    res.status(401).send("로그인 실패");
   }
 });
 

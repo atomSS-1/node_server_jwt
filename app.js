@@ -15,7 +15,7 @@ switch (process.env.NODE_ENV) {
     console.log("dot env load");
 }
 //require("dotenv").config({ path: __dirname + "/env.test" });
-console.log(`process.env.NODE_ENV=${process.env.NODE_ENV}`);
+//console.log(`process.env.NODE_ENV=${process.env.NODE_ENV}`);
 var createError = require("http-errors");
 var express = require("express");
 

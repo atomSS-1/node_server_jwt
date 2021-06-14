@@ -18,14 +18,14 @@ const Sequelize = require("sequelize");
 const basename = path.basename(__filename);
 const env = process.env.NODE_ENV.trim() || "development";
 const jsconfig = require(__dirname + "/../config/config.js");
-console.log("jsconfig", jsconfig);
+
 const configJson = JSON.parse(JSON.stringify(jsconfig));
 
 const config = configJson[env];
 const db = {};
 
 let sequelize;
-console.log("configJson", configJson[env]);
+
 if (config.use_env_variable) {
   sequelize = new Sequelize(process.env[config.use_env_variable], config);
 } else {

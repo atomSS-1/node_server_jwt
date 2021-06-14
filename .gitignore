@@ -2,3 +2,5 @@
 .env.development
 .env.production
 .env.test
+test.js
+test2.js

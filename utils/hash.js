@@ -13,12 +13,13 @@ async function hash(element) {
     next(err);
   }
 }
-async function compareHash(user) {
+async function compareHash(password, userPassword, next) {
   try {
-    const match = await bcrypt.compare(password, user.passwordHash);
+    const match = await bcrypt.compare(password.toString(), userPassword);
+    return match;
   } catch (err) {
     console.log(err);
-    return "비교 에러";
+    next(err);
   }
 }
 module.exports = {
