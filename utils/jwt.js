@@ -6,7 +6,7 @@ function signJwt(user, next) {
         {
           user_id: user.id,
         },
-        "123", //YOUR_SECRET_KEY,
+        process.env.secret_key.toString(), //YOUR_SECRET_KEY,
         {
           expiresIn: "1h",
         }

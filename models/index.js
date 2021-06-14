@@ -1,16 +1,31 @@
 "use strict";
-//require("dotenv").config();
+switch (process.env.NODE_ENV.trim()) {
+  case "development":
+    require("dotenv").config({ path: __dirname + "/../env.development" });
+    break;
+  case "test":
+    require("dotenv").config({ path: __dirname + "/../env.test" });
+    break;
+  case "production":
+    require("dotenv").config({ path: __dirname + "/../env.production" });
+    break;
+}
+console.log(`process.env.NODE_ENV ${process.env.NODE_ENV}`);
 
 const fs = require("fs");
 const path = require("path");
 const Sequelize = require("sequelize");
 const basename = path.basename(__filename);
 const env = process.env.NODE_ENV.trim() || "development";
-const config = require(__dirname + "/../config/config.json")[env];
+const jsconfig = require(__dirname + "/../config/config.js");
+console.log("jsconfig", jsconfig);
+const configJson = JSON.parse(JSON.stringify(jsconfig));
+
+const config = configJson[env];
 const db = {};
 
 let sequelize;
-
+console.log("configJson", configJson[env]);
 if (config.use_env_variable) {
   sequelize = new Sequelize(process.env[config.use_env_variable], config);
 } else {

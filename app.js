@@ -1,14 +1,23 @@
 "use strict";
-if (process.env.NODE_ENV.trim() === "development") {
-  require("dotenv").config({ path: __dirname + "/.env.development" });
-} else if (process.env.NODE_ENV.trim() === "test") {
-  require("dotenv").config({ path: __dirname + "/.env.test" });
-} else if (process.env.NODE_ENV.trim() === "production") {
-  require("dotenv").config({ path: __dirname + "/.env.production" });
+var path = require("path");
+console.log(process.env.NODE_ENV);
+switch (process.env.NODE_ENV) {
+  case "development":
+    require("dotenv").config({ path: __dirname + "/env.development" });
+    break;
+  case "test":
+    require("dotenv").config({ path: __dirname + "/env.test" });
+    break;
+  case "production":
+    require("dotenv").config({ path: __dirname + "/env.production" });
+    break;
+  default:
+    console.log("dot env load");
 }
+//require("dotenv").config({ path: __dirname + "/env.test" });
+console.log(`process.env.NODE_ENV=${process.env.NODE_ENV}`);
 var createError = require("http-errors");
 var express = require("express");
-var path = require("path");
 
 var usersRouter = require("./routes/users");
 

@@ -4,13 +4,24 @@
  * Module dependencies.
  */
 "use strict";
+switch (process.env.NODE_ENV.trim()) {
+  case "development":
+    require("dotenv").config({ path: __dirname + "/../env.development" });
+    break;
+  case "test":
+    require("dotenv").config({ path: __dirname + "/../env.test" });
+    break;
+  case "production":
+    require("dotenv").config({ path: __dirname + "/../env.production" });
+    break;
+}
 var app = require("../app");
 var debug = require("debug")("knance:server");
 var http = require("http");
 const sequelize = require("../models").sequelize;
 const db = require("../models");
 const syncOptions =
-  process.env.NODE_ENV.trim() === "production" ? null : { alter: true }; //synce 옵션 설정
+  process.env.NODE_ENV === "production" ? null : { alter: true }; //synce 옵션 설정
 /**
  * Get port from environment and store in Express.
  */
@@ -24,9 +35,9 @@ app.set("port", port);
  */
 
 db.sequelize
-  .query(`CREATE DATABASE IF NOT EXISTS ${process.env.database};`) //데이터 베이스를 생성한다.
+  .query(`CREATE DATABASE IF NOT EXISTS ${process.env.DB_NAME};`) //데이터 베이스를 생성한다.
   .then((result) => {
-    db.sequelize.query(`use ${process.env.database};`); //데이터 베이스 사용
+    db.sequelize.query(`use ${process.env.DB_NAME};`); //데이터 베이스 사용
   })
   .then(() => {
     db.sequelize.sync(syncOptions);
