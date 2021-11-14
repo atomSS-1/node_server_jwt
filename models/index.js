@@ -1,5 +1,5 @@
 "use strict";
-switch (process.env.NODE_ENV.trim()) {
+switch (process.env.NODE_ENV) {
   case "development":
     require("dotenv").config({ path: __dirname + "/../env.development" });
     break;
@@ -16,7 +16,7 @@ const fs = require("fs");
 const path = require("path");
 const Sequelize = require("sequelize");
 const basename = path.basename(__filename);
-const env = process.env.NODE_ENV.trim() || "development";
+const env = process.env.NODE_ENVß || "development";
 const jsconfig = require(__dirname + "/../config/config.js");
 
 const configJson = JSON.parse(JSON.stringify(jsconfig));

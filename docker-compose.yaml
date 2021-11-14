@@ -7,25 +7,26 @@ services:
   mysql:
     networks:
       - app-tier
+    platform: linux/x86_64
     image: mysql
     container_name: mysql_container
     restart: always
     ports:
       - "3306:3306"
     environment:
-      - MYSQL_ROOT_PASSWORD=1234
-      - MYSQL_USER=me
-      - MYSQL_PASSWORD=1234
-      - MYSQL_DATABASE=Knance
+      - MYSQL_ROOT_PASSWORD=password1
+      - MYSQL_USER=user1
+      - MYSQL_PASSWORD=password1
+      - MYSQL_DATABASE=user1
   app:
     networks:
       - app-tier
     build:
       context: .
-      dockerfile: .
+      dockerfile: Dockerfile
     volumes:
       - ./:/usr/src/app
-     
+      - /usr/src/app/node_modules # Remove this if you have pure JS dependencies
     restart: always
     ports:
       - "3000:3000"
@@ -33,4 +34,3 @@ services:
       - mysql
     depends_on:
       - mysql
-   
