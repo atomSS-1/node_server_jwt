@@ -1,4 +1,4 @@
-# knance 과제 documentation
+# documentation
  설치(필요) 프로그램:
  * node js
  * mysql
