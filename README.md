@@ -1,4 +1,4 @@
-# documentation
+# Documentation
  설치(필요) 프로그램:
  * node js
  * mysql
